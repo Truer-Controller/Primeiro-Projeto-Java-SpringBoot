@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import ac.facens.evento.acevento.dto.EventDTO;
 import ac.facens.evento.acevento.dto.EventInsertDTO;
+import ac.facens.evento.acevento.dto.EventUpdateDTO;
 import ac.facens.evento.acevento.entities.Event;
 import ac.facens.evento.acevento.repositories.EventRepository;
 
@@ -51,6 +54,20 @@ public class EventService {
         catch(EmptyResultDataAccessException a){
            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client Not Found");
         }
+    }
+
+    public EventDTO update(Long id, EventUpdateDTO dto){
+      try{ 
+        Event entity = repo.getOne(id);
+        entity.setName(dto.getName());
+        entity = repo.save(entity);
+        return new EventDTO(entity);
+      }
+      catch(EntityNotFoundException a){
+
+       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client Not Found");
+
+      }
     }
     
     public List<EventDTO> toDTOList(List<Event> list){

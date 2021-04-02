@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import ac.facens.evento.acevento.dto.EventDTO;
 import ac.facens.evento.acevento.dto.EventInsertDTO;
+import ac.facens.evento.acevento.dto.EventUpdateDTO;
 import ac.facens.evento.acevento.services.EventService;
 
 @RestController
@@ -48,6 +50,12 @@ public class EventController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<EventDTO> update(@RequestBody EventUpdateDTO updateDto, @PathVariable Long id) {
+        EventDTO dto = service.update(id, updateDto);
+        return ResponseEntity.ok().body(dto);
     }
 
 }
