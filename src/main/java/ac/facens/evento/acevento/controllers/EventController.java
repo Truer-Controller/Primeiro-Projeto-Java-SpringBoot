@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ac.facens.evento.acevento.dto.EventDTO;
-import ac.facens.evento.acevento.entities.Event;
 import ac.facens.evento.acevento.services.EventService;
 
 @RestController

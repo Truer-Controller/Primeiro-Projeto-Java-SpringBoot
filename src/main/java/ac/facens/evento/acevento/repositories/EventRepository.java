@@ -10,8 +10,6 @@ import ac.facens.evento.acevento.entities.Event;
 @Component
 public class EventRepository {
 
-
-
     public List<Event> getEvents() {
 
         Event e = new Event();
@@ -31,6 +29,6 @@ public class EventRepository {
         list.add(e1);
 
         return list;
-    
+
     }
 }
