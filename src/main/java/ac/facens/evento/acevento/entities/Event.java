@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_EVENT")
-public class Event implements Serializable{
+public class Event implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,6 +23,8 @@ public class Event implements Serializable{
     private String description;
 
     private String place;
+
+    private String email;
 
     public Long getId() {
         return id;
@@ -56,6 +58,14 @@ public class Event implements Serializable{
         this.place = place;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -80,7 +90,5 @@ public class Event implements Serializable{
             return false;
         return true;
     }
-
-    
 
 }
