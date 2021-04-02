@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -41,6 +42,15 @@ public class EventService {
         Event entity = new Event(dto);
         entity =  repo.save(entity);
         return new EventDTO(entity);
+    }
+
+    public void delete(Long id){
+        try{
+        repo.deleteById(id);
+        }
+        catch(EmptyResultDataAccessException a){
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client Not Found");
+        }
     }
     
     public List<EventDTO> toDTOList(List<Event> list){
