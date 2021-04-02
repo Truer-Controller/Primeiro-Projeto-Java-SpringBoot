@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import ac.facens.evento.acevento.dto.EventDTO;
+import ac.facens.evento.acevento.dto.EventInsertDTO;
 import ac.facens.evento.acevento.entities.Event;
 import ac.facens.evento.acevento.repositories.EventRepository;
 
@@ -34,6 +35,12 @@ public class EventService {
 
       return new EventDTO(eve);
 
+    }
+
+    public EventDTO insert(EventInsertDTO dto){
+        Event entity = new Event(dto);
+        entity =  repo.save(entity);
+        return new EventDTO(entity);
     }
     
     public List<EventDTO> toDTOList(List<Event> list){

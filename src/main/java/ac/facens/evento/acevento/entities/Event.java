@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import ac.facens.evento.acevento.dto.EventInsertDTO;
+
 @Entity
 @Table(name = "TB_EVENT")
 public class Event implements Serializable {
@@ -25,6 +27,17 @@ public class Event implements Serializable {
     private String place;
 
     private String email;
+
+    public Event() {
+
+    }
+
+    public Event(EventInsertDTO dto) {
+        this.name = dto.getName();
+        this.description = dto.getDescription();
+        this.place = dto.getPlace();
+        this.email = dto.getEmail();
+    }
 
     public Long getId() {
         return id;
