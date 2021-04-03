@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import ac.facens.evento.acevento.dto.EventDTO;
 import ac.facens.evento.acevento.dto.EventInsertDTO;
 import ac.facens.evento.acevento.dto.EventUpdateDTO;

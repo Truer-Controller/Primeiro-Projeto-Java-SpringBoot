@@ -1,13 +1,11 @@
 package ac.facens.evento.acevento.entities;
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import ac.facens.evento.acevento.dto.EventInsertDTO;
 
 @Entity

@@ -3,15 +3,12 @@ package ac.facens.evento.acevento.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import javax.persistence.EntityNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import ac.facens.evento.acevento.dto.EventDTO;
 import ac.facens.evento.acevento.dto.EventInsertDTO;
 import ac.facens.evento.acevento.dto.EventUpdateDTO;
