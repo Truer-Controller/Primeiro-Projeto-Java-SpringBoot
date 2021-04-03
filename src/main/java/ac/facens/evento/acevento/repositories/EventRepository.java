@@ -11,8 +11,15 @@ import ac.facens.evento.acevento.entities.Event;
 @Repository
 public interface EventRepository extends JpaRepository <Event, Long>{
 
-    @Query("SELECT c FROM Event c")
-    public Page <Event> find(Pageable pageRequest);
+    @Query("SELECT e FROM Event e" + 
+    " WHERE " +
+    "(LOWER(e.name)           LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
+    "(LOWER(e.description)     LIKE LOWER(CONCAT('%', :description, '%'))) AND " +
+    "(LOWER(e.place)           LIKE LOWER(CONCAT('%', :place, '%'))) AND " +
+    "(LOWER(e.email)           LIKE LOWER(CONCAT('%', :email, '%'))) "
+    )
+
+    public Page <Event> find(Pageable pageRequest, String name, String description, String place, String email);
 
 
 }
