@@ -1,6 +1,8 @@
 package ac.facens.evento.acevento.controllers;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,13 +41,15 @@ public class EventController {
             @RequestParam(value = "name",           defaultValue = "") String name,
             @RequestParam(value = "description",    defaultValue = "") String description,
             @RequestParam(value = "place",    defaultValue = "") String place,
-            @RequestParam(value = "email",    defaultValue = "") String email
+            @RequestParam(value = "datainicio",    defaultValue = "") LocalDate datainicio,
+            @RequestParam(value = "tempoinicio",    defaultValue = "") LocalTime tempoinicio
+            
 
     ) {
 
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 
-        Page<EventDTO> list = service.getEvents(pageRequest, name, description, place, email);
+        Page<EventDTO> list = service.getEvents(pageRequest, name, description, place, datainicio, tempoinicio);
         return ResponseEntity.ok(list);
     }
 

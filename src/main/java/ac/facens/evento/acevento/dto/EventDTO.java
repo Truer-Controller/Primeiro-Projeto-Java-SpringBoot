@@ -1,5 +1,8 @@
 package ac.facens.evento.acevento.dto;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import ac.facens.evento.acevento.entities.Event;
 
 public class EventDTO {
@@ -9,17 +12,25 @@ public class EventDTO {
     private String description;
     private String place;
     private String email;
+    private LocalDate datainicio;
+    private LocalDate datatermino;
+    private LocalTime tempoinicio;
+    private LocalTime tempotermino;
 
     public EventDTO() {
 
     }
 
-    public EventDTO(Long id, String name, String description, String place, String email) {
+    public EventDTO(Long id, String name, String description, String place, String email, LocalDate datainicio, LocalDate datatermino, LocalTime tempoinicio, LocalTime tempotermino) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.place = place;
         this.email = email;
+        this.datainicio = datainicio;
+        this.datatermino = datatermino;
+        this.tempoinicio = tempoinicio;
+        this.tempotermino = tempotermino;
     }
 
     public EventDTO(Event eve) {
@@ -28,6 +39,10 @@ public class EventDTO {
         this.description = eve.getDescription();
         this.place = eve.getPlace();
         this.email = eve.getEmail();
+        this.datainicio = eve.getDatainicio();
+        this.datatermino = eve.getDatatermino();
+        this.tempoinicio = eve.getTempoinicio();
+        this.tempotermino = eve.getTempotermino();
     }
 
     public Long getId() {
@@ -69,5 +84,39 @@ public class EventDTO {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public LocalDate getDatainicio() {
+        return datainicio;
+    }
+
+    public void setDatainicio(LocalDate datainicio) {
+        this.datainicio = datainicio;
+    }
+
+    public LocalDate getDatatermino() {
+        return datatermino;
+    }
+
+    public void setDatatermino(LocalDate datatermino) {
+        this.datatermino = datatermino;
+    }
+
+    public LocalTime getTempoinicio() {
+        return tempoinicio;
+    }
+
+    public void setTempoinicio(LocalTime tempoinicio) {
+        this.tempoinicio = tempoinicio;
+    }
+
+    public LocalTime getTempotermino() {
+        return tempotermino;
+    }
+
+    public void setTempotermino(LocalTime tempotermino) {
+        this.tempotermino = tempotermino;
+    }
+
+    
 
 }

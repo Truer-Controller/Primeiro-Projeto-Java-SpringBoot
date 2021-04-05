@@ -1,5 +1,8 @@
 package ac.facens.evento.acevento.repositories;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,13 +16,15 @@ public interface EventRepository extends JpaRepository <Event, Long>{
 
     @Query("SELECT e FROM Event e" + 
     " WHERE " +
-    "(LOWER(e.name)           LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
+    "(LOWER(e.name)            LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
     "(LOWER(e.description)     LIKE LOWER(CONCAT('%', :description, '%'))) AND " +
-    "(LOWER(e.place)           LIKE LOWER(CONCAT('%', :place, '%'))) AND " +
-    "(LOWER(e.email)           LIKE LOWER(CONCAT('%', :email, '%'))) "
+    "(LOWER(e.place)           LIKE LOWER(CONCAT('%', :place, '%')))AND " +
+    "e.datainicio >= :datainicio AND " +
+    "e.tempotermino >= :tempoinicio"
+
     )
 
-    public Page <Event> find(Pageable pageRequest, String name, String description, String place, String email);
+    public Page <Event> find(Pageable pageRequest, String name, String description, String place, LocalDate datainicio, LocalTime tempoinicio);
 
 
 }

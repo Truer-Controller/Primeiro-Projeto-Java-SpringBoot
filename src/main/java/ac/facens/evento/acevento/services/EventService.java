@@ -1,5 +1,7 @@
 package ac.facens.evento.acevento.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,9 +25,9 @@ public class EventService {
     @Autowired
     private EventRepository repo;
 
-    public Page<EventDTO> getEvents(Pageable pageRequest, String name, String description, String place, String email) {
+    public Page<EventDTO> getEvents(Pageable pageRequest, String name, String description, String place, LocalDate datainicio, LocalTime tempoinicio) {
 
-        Page<Event> list = repo.find(pageRequest, name, description, place, email);
+        Page<Event> list = repo.find(pageRequest, name, description, place, datainicio, tempoinicio);
         return list.map(c -> new EventDTO(c));
     }
 
@@ -73,7 +75,7 @@ public class EventService {
         List<EventDTO> listDTO = new ArrayList<>();
 
         for (Event e : list) {
-            EventDTO dto = new EventDTO(e.getId(), e.getName(), e.getDescription(), e.getPlace(), e.getEmail());
+            EventDTO dto = new EventDTO(e.getId(), e.getName(), e.getDescription(), e.getPlace(), e.getEmail(), e.getDatainicio(), e.getDatatermino(), e.getTempoinicio(), e.getTempotermino());
             listDTO.add(dto);
         }
         return listDTO;
