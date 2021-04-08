@@ -25,9 +25,10 @@ public class EventService {
     @Autowired
     private EventRepository repo;
 
-    public Page<EventDTO> getEvents(Pageable pageRequest, String name, String description, String place, LocalDate datainicio, LocalTime tempoinicio) {
-
-        Page<Event> list = repo.find(pageRequest, name, description, place, datainicio, tempoinicio);
+    public Page<EventDTO> getEvents(Pageable pageRequest, String name, String description, String place, String datainicio, String tempoinicio) {
+        LocalDate data = LocalDate.parse(datainicio);
+        LocalTime tempo = LocalTime.parse(tempoinicio);
+        Page<Event> list = repo.find(pageRequest, name, description, place, data, tempo);
         return list.map(c -> new EventDTO(c));
     }
 
